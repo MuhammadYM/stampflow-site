@@ -1,12 +1,6 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
   <rect width="1200" height="630" fill="#FAFAFA"/>
-
-  <!-- Subtle grid / texture -->
-  <rect width="1200" height="630" fill="url(#grid)" opacity="0.4"/>
-
-  <!-- Large decorative logo mark (top-right, faded) -->
-  <g transform="translate(820, 40) scale(1.6)" opacity="0.08">
+  <g transform="translate(344, 8) scale(1.0)">
     <path opacity="0.7" d="M124.475 534.669H361.223C377.5 534.669 392.542 525.991 400.681 511.903L453.291 420.838H190.276L124.475 534.669Z" fill="#123AFF"/>
     <path opacity="0.4" d="M321.852 193.173H58.7266L111.337 102.108C119.476 88.0203 134.517 79.3418 150.795 79.3418L387.543 79.3418L321.852 193.173Z" fill="#123AFF"/>
     <path opacity="0.4" d="M505.945 329.771C514.084 315.684 514.084 298.327 505.945 284.239L453.335 193.174L387.571 307.005H124.522L190.279 420.836H453.295L453.315 420.802L453.335 420.836L505.945 329.771Z" fill="#123AFF"/>
@@ -14,37 +8,4 @@
     <path opacity="0.7" d="M321.85 193.174H58.7335L6.14898 284.24C-1.98563 298.327 -1.98309 315.681 6.15564 329.767L58.778 420.836L124.541 307.005L387.581 307.005L387.597 306.978L321.85 193.174Z" fill="#123AFF"/>
     <path d="M453.354 193.173L387.59 79.3418L321.827 193.173L387.59 307.004L453.354 193.173Z" fill="#123AFF"/>
   </g>
-
-  <!-- Logo mark -->
-  <g transform="translate(80, 215) scale(0.34)">
-    <path opacity="0.7" d="M124.475 534.669H361.223C377.5 534.669 392.542 525.991 400.681 511.903L453.291 420.838H190.276L124.475 534.669Z" fill="#123AFF"/>
-    <path opacity="0.4" d="M321.852 193.173H58.7266L111.337 102.108C119.476 88.0203 134.517 79.3418 150.795 79.3418L387.543 79.3418L321.852 193.173Z" fill="#123AFF"/>
-    <path opacity="0.4" d="M505.945 329.771C514.084 315.684 514.084 298.327 505.945 284.239L453.335 193.174L387.571 307.005H124.522L190.279 420.836H453.295L453.315 420.802L453.335 420.836L505.945 329.771Z" fill="#123AFF"/>
-    <path d="M190.253 420.836L124.49 307.005L58.7266 420.836L124.49 534.667L190.253 420.836Z" fill="#123AFF"/>
-    <path opacity="0.7" d="M321.85 193.174H58.7335L6.14898 284.24C-1.98563 298.327 -1.98309 315.681 6.15564 329.767L58.778 420.836L124.541 307.005L387.581 307.005L387.597 306.978L321.85 193.174Z" fill="#123AFF"/>
-    <path d="M453.354 193.173L387.59 79.3418L321.827 193.173L387.59 307.004L453.354 193.173Z" fill="#123AFF"/>
-  </g>
-
-  <!-- StampFlow wordmark -->
-  <text x="262" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="88" font-weight="700" letter-spacing="-3" fill="#0A0A0A">StampFlow</text>
-
-  <!-- Tagline -->
-  <text x="264" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="32" font-weight="400" fill="#6B7280">Digital Certification for PDFs</text>
-
-  <!-- Divider -->
-  <rect x="80" y="430" width="120" height="3" rx="2" fill="#123AFF"/>
-
-  <!-- Description -->
-  <text x="80" y="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" fill="#4B5563">Create, place, and export professional stamps on any PDF</text>
-  <text x="80" y="525" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="24" fill="#4B5563">— no account needed.</text>
-
-  <!-- URL badge -->
-  <rect x="80" y="560" width="220" height="40" rx="6" fill="#123AFF" opacity="0.1"/>
-  <text x="100" y="586" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="20" font-weight="500" fill="#123AFF">stampflow.xyz</text>
-
-  <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E5E7EB" stroke-width="0.5"/>
-    </pattern>
-  </defs>
 </svg>

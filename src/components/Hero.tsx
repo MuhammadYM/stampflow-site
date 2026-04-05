@@ -1,14 +1,28 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import heroImg from '../assets/hero.jpeg'
+import heroVideo from '../assets/stampflow-tutorial.mp4'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
   const imgY = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const [playing, setPlaying] = useState(false)
+
+  function handlePlay() {
+    const v = videoRef.current
+    if (!v) return
+    if (playing) {
+      v.pause()
+      setPlaying(false)
+    } else {
+      v.play()
+      setPlaying(true)
+    }
+  }
 
   return (
     <section
@@ -152,7 +166,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Product screenshot */}
+      {/* Video */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -163,21 +177,71 @@ export default function Hero() {
           marginTop: '64px',
           position: 'relative',
           zIndex: 10,
+          y: imgY,
         }}
       >
-        <motion.img
-          src={heroImg}
-          alt="StampFlow app screenshot"
+      <div
+        onClick={handlePlay}
+        style={{
+          borderRadius: '16px',
+          overflow: 'hidden',
+          cursor: 'pointer',
+          outline: '1px solid var(--border)',
+          position: 'relative',
+        }}
+      >
+        <motion.video
+          ref={videoRef}
+          src={heroVideo}
+          muted
+          loop
+          playsInline
+          preload="auto"
           style={{
             width: '100%',
-            borderRadius: '16px',
+            display: 'block',
             mixBlendMode: 'luminosity',
             opacity: 0.92,
-            outline: '1px solid var(--border)',
-            display: 'block',
-            y: imgY,
           }}
         />
+
+        {/* Play button */}
+        <motion.div
+          animate={{ opacity: playing ? 0 : 1 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(0,0,0,0.25)',
+            pointerEvents: 'none',
+          }}
+        >
+          <div style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.15)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(255,255,255,0.25)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            {/* Play triangle */}
+            <div style={{
+              width: 0,
+              height: 0,
+              borderTop: '10px solid transparent',
+              borderBottom: '10px solid transparent',
+              borderLeft: '18px solid #fff',
+              marginLeft: '4px',
+            }} />
+          </div>
+        </motion.div>
+      </div>
       </motion.div>
 
       {/* Bottom fade */}

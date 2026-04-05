@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import libraryImg from '../assets/feature-library.png'
+import libraryImg from '../assets/stamplibrary.gif'
 import typeImg from '../assets/feature-type.png'
 import fontsImg from '../assets/feature-fonts.png'
 
@@ -88,7 +88,7 @@ export default function Features() {
           >
             <div style={{
               width: '100%',
-              height: '200px',
+              height: '140px',
               overflow: 'hidden',
               backgroundColor: 'var(--surface-2)',
               display: 'flex',
@@ -100,7 +100,7 @@ export default function Features() {
                 alt={card.title}
                 style={{
                   width: '100%',
-                  objectFit: 'cover',
+                  objectFit: i === 0 ? 'contain' : 'cover',
                   objectPosition: 'top center',
                   height: '100%',
                 }}
