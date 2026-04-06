@@ -39,7 +39,7 @@ export default function Testimonial() {
       id="reviews"
       ref={containerRef}
       style={{
-        padding: '96px 24px',
+        padding: 'clamp(64px, 8vw, 96px) 24px',
         minHeight: '60vh',
         display: 'flex',
         alignItems: 'center',

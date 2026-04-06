@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export default function CTA() {
   return (
     <section style={{
-      padding: '96px 24px',
+      padding: 'clamp(64px, 8vw, 96px) 24px',
       position: 'relative',
       overflow: 'hidden',
       textAlign: 'center',

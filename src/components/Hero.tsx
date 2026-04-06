@@ -36,7 +36,7 @@ export default function Hero() {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        padding: '80px 24px 0',
+        padding: 'clamp(60px, 8vw, 80px) 20px 0',
       }}
     >
       {/* Content */}
@@ -174,7 +174,7 @@ export default function Hero() {
         style={{
           width: '100%',
           maxWidth: '960px',
-          marginTop: '64px',
+          marginTop: 'clamp(40px, 6vw, 64px)',
           position: 'relative',
           zIndex: 10,
           y: imgY,

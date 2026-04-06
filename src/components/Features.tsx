@@ -25,7 +25,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      style={{ padding: '96px 24px', maxWidth: '1200px', margin: '0 auto' }}
+      style={{ padding: 'clamp(64px, 8vw, 96px) 24px', maxWidth: '1200px', margin: '0 auto' }}
     >
       <motion.p
         initial={{ opacity: 0, y: 12 }}
@@ -57,17 +57,14 @@ export default function Features() {
         }}
       >
         Everything you need to certify{' '}
-        <em style={{
-          fontFamily: "'Instrument Serif', serif",
-          fontStyle: 'italic',
-          fontWeight: 400,
-        }}>
+        <em style={{ fontFamily: "'Instrument Serif', serif", fontStyle: 'italic', fontWeight: 400 }}>
           any
         </em>{' '}
         document.
       </motion.h2>
 
-      <div style={{
+      {/* Desktop: bento 2-col grid */}
+      <div className="features-grid" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gridTemplateRows: 'auto auto',
@@ -77,11 +74,11 @@ export default function Features() {
       }}>
         {/* Card 0 — tall, spans 2 rows on left */}
         <motion.div
-          key={cards[0].title}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.55 }}
+          className="features-tall-card"
           style={{
             backgroundColor: 'var(--surface)',
             borderRadius: '16px',
@@ -92,11 +89,11 @@ export default function Features() {
             flexDirection: 'column',
           }}
         >
-          <div style={{ flex: 1, overflow: 'hidden', minHeight: '260px' }}>
+          <div style={{ overflow: 'hidden' }}>
             <img
               src={cards[0].img}
               alt={cards[0].title}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
             />
           </div>
           <div style={{ padding: '20px' }}>
@@ -131,13 +128,13 @@ export default function Features() {
                 <video
                   src={card.video}
                   autoPlay muted loop playsInline
-                  style={{ width: '100%', display: 'block' }}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               ) : (
                 <img
                   src={card.img}
                   alt={card.title}
-                  style={{ width: '100%', display: 'block' }}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               )}
             </div>
@@ -152,6 +149,17 @@ export default function Features() {
           </motion.div>
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .features-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .features-tall-card {
+            grid-row: auto !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

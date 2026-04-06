@@ -22,7 +22,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      style={{ padding: '96px 24px', maxWidth: '720px', margin: '0 auto' }}
+      style={{ padding: 'clamp(64px, 8vw, 96px) 24px', maxWidth: '720px', margin: '0 auto' }}
     >
       <motion.p
         initial={{ opacity: 0, y: 12 }}
@@ -65,13 +65,13 @@ export default function HowItWorks() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: i * 0.12 }}
           >
-            <div style={{
+            <div className="step-row" style={{
               display: 'flex',
               alignItems: 'flex-start',
               gap: '32px',
               padding: '48px 0',
             }}>
-              <span style={{
+              <span className="step-number" style={{
                 fontFamily: "'PT Mono', monospace",
                 fontSize: '52px',
                 fontWeight: 300,
@@ -109,6 +109,13 @@ export default function HowItWorks() {
           </motion.div>
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 480px) {
+          .step-row { gap: 20px !important; padding-top: 32px !important; padding-bottom: 32px !important; }
+          .step-number { font-size: 36px !important; width: 48px !important; }
+        }
+      `}</style>
     </section>
   )
 }
