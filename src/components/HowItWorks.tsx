@@ -1,4 +1,6 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { track } from '../analytics'
 
 const steps = [
   {
@@ -19,8 +21,21 @@ const steps = [
 ]
 
 export default function HowItWorks() {
+  const sectionRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { track('section_viewed', { section: 'how_it_works' }); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="how-it-works"
       style={{ padding: 'clamp(64px, 8vw, 96px) 24px', maxWidth: '720px', margin: '0 auto' }}
     >

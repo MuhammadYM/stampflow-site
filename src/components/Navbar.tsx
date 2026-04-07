@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { track } from '../analytics'
 
 const logoPath = '/logo.svg'
 const navLinks = ['Features', 'How it works', 'Reviews']
@@ -36,6 +37,7 @@ export default function Navbar() {
             <a
               key={link}
               href={`#${link.toLowerCase().replace(/ /g, '-')}`}
+              onClick={() => track('nav_link_clicked', { label: link.toLowerCase().replace(/ /g, '_'), location: 'navbar' })}
               style={{ fontSize: '14px', color: 'var(--text-2)', textDecoration: 'none', transition: 'color 0.15s' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-2)')}
@@ -54,6 +56,7 @@ export default function Navbar() {
             className="liquid-glass"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => track('cta_clicked', { label: 'open_app', location: 'navbar' })}
             style={{
               borderRadius: '9999px',
               padding: '8px 20px',
@@ -70,7 +73,7 @@ export default function Navbar() {
           {/* Hamburger — mobile only */}
           <button
             className="hamburger-btn"
-            onClick={() => setOpen(v => !v)}
+            onClick={() => { const next = !open; setOpen(next); track('mobile_menu_toggled', { state: next ? 'open' : 'closed' }) }}
             aria-label={open ? 'Close menu' : 'Open menu'}
             style={{
               display: 'none',
@@ -114,7 +117,7 @@ export default function Navbar() {
                 <motion.a
                   key={link}
                   href={`#${link.toLowerCase().replace(/ /g, '-')}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => { setOpen(false); track('nav_link_clicked', { label: link.toLowerCase().replace(/ /g, '_'), location: 'mobile_menu' }) }}
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.18, delay: i * 0.05 }}

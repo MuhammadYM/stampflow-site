@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import heroVideo from '../assets/stampflow-tutorial.mp4'
 import heroPoster from '../assets/hero.jpeg'
+import { track } from '../analytics'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -19,9 +20,11 @@ export default function Hero() {
     if (playing) {
       v.pause()
       setPlaying(false)
+      track('hero_video_paused')
     } else {
       v.play()
       setPlaying(true)
+      track('hero_video_played')
     }
   }
 
@@ -135,6 +138,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
+            onClick={() => track('cta_clicked', { label: 'try_it_free', location: 'hero' })}
             style={{
               backgroundColor: 'var(--accent)',
               color: '#fff',
@@ -153,6 +157,7 @@ export default function Hero() {
             className="liquid-glass"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
+            onClick={() => track('nav_link_clicked', { label: 'see_how_it_works', location: 'hero' })}
             style={{
               borderRadius: '9999px',
               padding: '12px 28px',

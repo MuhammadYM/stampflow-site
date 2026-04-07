@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { track } from '../analytics'
 
 export default function CTA() {
   return (
@@ -55,6 +56,7 @@ export default function CTA() {
           rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
+          onClick={() => track('cta_clicked', { label: 'get_started_free', location: 'cta_section' })}
           style={{
             display: 'inline-block',
             backgroundColor: 'var(--accent)',

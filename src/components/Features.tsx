@@ -1,7 +1,9 @@
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import libraryImg from '../assets/feature-library.png'
 import signImg from '../assets/feature-sign.png'
 import fontsImg from '../assets/feature-fonts2.png'
+import { track } from '../analytics'
 
 const cards = [
   {
@@ -22,8 +24,21 @@ const cards = [
 ] as { img?: string; video?: string; title: string; desc: string }[]
 
 export default function Features() {
+  const sectionRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { track('section_viewed', { section: 'features' }); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="features"
       style={{ padding: 'clamp(64px, 8vw, 96px) 24px', maxWidth: '1200px', margin: '0 auto' }}
     >
