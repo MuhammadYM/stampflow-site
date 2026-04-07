@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import heroVideo from '../assets/stampflow-tutorial.mp4'
+import heroPoster from '../assets/hero.jpeg'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -193,6 +194,7 @@ export default function Hero() {
         <motion.video
           ref={videoRef}
           src={heroVideo}
+          poster={heroPoster}
           muted
           loop
           playsInline
